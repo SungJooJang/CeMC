@@ -30,7 +30,15 @@
 		width: 42%;}	
 	.thumbnail{outline: solid 1px #00ff00;
 		width: 240px;
-		margin: 0;}
+		margin: 0;
+		transition: transform 10s ease, box-shadow 10 ease;
+		transform-style: preserve-3d;}
+		.thumbnail:hover{transform: translateY(-20px);
+			animation: spin 20s linear infinite;}
+		@keyframes spin {
+			from { transform: translateY(-20px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+			to   { transform: translateY(-50px) rotateX(360deg) rotateY(30deg) rotateZ(30deg); }
+		}
 	.t-container{position: absolute;
 		padding: 0px 40px;
 		box-sizing: border-box;
@@ -51,25 +59,25 @@
 	<h1 class="title">가성비 영화 캠페인<br>Cost-effective Movie Campaign</h1>
 	<p class="paragraph">본 작품은 허구이며, 실제 인물. 단체. 사건과 어떠한 관련도 없습니다. <br>This is a work of fiction. Names, characters, places, and incidents either are products of the author’s imagination or are used fictitiously. Any resemblance to actual events or locales or persons, living or dead, is entirely coincidental. <br><br>ⓒ2025 가성비 영화 프로젝트. All Rights Reserved.</p>
 	<div class="t-container">
-		<video src="JYS.mp4" autoplay muted loop class="thumbnail"></video>
-		<video src="SJJ.mp4" autoplay muted loop class="thumbnail"></video>
-		<video src="JYS.mp4" autoplay muted loop class="thumbnail"></video>
-		<video src="SJJ.mp4" autoplay muted loop class="thumbnail"></video>
-		<video src="JYS.mp4" autoplay muted loop class="thumbnail"></video>
-		<video src="SJJ.mp4" autoplay muted loop class="thumbnail"></video>
+		<img src="SJJ.gif" autoplay muted loop class="thumbnail"></img>
+		<img src="SJJ.gif" autoplay muted loop class="thumbnail"></img>
+		<img src="SJJ.gif" autoplay muted loop class="thumbnail"></img>
+		<img src="SJJ.gif" autoplay muted loop class="thumbnail"></img>
+		<img src="SJJ.gif" autoplay muted loop class="thumbnail"></img>
+		<img src="SJJ.gif" autoplay muted loop class="thumbnail"></img>
 	</div>
-	<div class="cursor"><img src="UFO.png" width="90px"></div>
+	<div class="cursor"><img src="UFO.png" width="120px"></div>
 
 <script>
+	
 	document.addEventListener('mousemove', (e) => {
 		let mouseX = e.pageX;
-		let mouseY = e.pageY - 200;
+		let mouseY = e.pageY - 250;
 
 		let cursor = document.querySelector('.cursor');
 		cursor.style.left = mouseX + 'px';
 		cursor.style.top = mouseY + 'px';
 	})
-	
 
 </script>
 
