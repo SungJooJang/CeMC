@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>가성비 영화 캠페인</title>
+
+	<style>
+		@font-face {
+    font-family: 'D2Coding';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+	html{height: 100%;}
+	body{margin: 0;
+		min-height: 100vh;
+		overflow: hidden;
+		background: black;
+	}
+	.title{color: #00ff00;
+		font-family: D2Coding;
+		font-size: 32px; 
+		padding: 15px 0px 0px 40px;}
+	.thumbnail{outline: solid 1px #00ff00;
+		width: 240px;
+		margin: 0;}
+	.t-container{position: absolute;
+		padding: 0px 40px;
+		box-sizing: border-box;
+		top: 78%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		}
+	.cursor{position: absolute;
+		transform: translateX(-50%);}
+
+
+	</style>
+
+</head>
+<body>
+	<h1 class="title">가성비 영화 캠페인<br>Cost-effective Movie Campaign</h1>
+	<div class="t-container">
+		<video src="JYS.mp4" autoplay muted loop class="thumbnail"></video>
+		<video src="SJJ.mp4" autoplay muted loop class="thumbnail"></video>
+		<video src="JYS.mp4" autoplay muted loop class="thumbnail"></video>
+		<video src="SJJ.mp4" autoplay muted loop class="thumbnail"></video>
+		<video src="JYS.mp4" autoplay muted loop class="thumbnail"></video>
+		<video src="SJJ.mp4" autoplay muted loop class="thumbnail"></video>
+	</div>
+	<div class="cursor"><img src="UFO.png" width="90px"></div>
+
+<script>
+	document.addEventListener('mousemove', (e) => {
+		let mouseX = e.pageX;
+		let mouseY = e.pageY - 200;
+
+		let cursor = document.querySelector('.cursor');
+		cursor.style.left = mouseX + 'px';
+		cursor.style.top = mouseY + 'px';
+	})
+	
+
+</script>
+
+
+</body>
+</html>
