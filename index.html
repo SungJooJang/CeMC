@@ -49,13 +49,14 @@
 		width: 100%;
 		}
 	.cursor{position: absolute;
-		transform: translateX(-50%);}
+		transform: translateX(-50%);
+		z-index: 20;}
 
 	.video{position: fixed;
 		right: 40px;
 		top: 132px;
 		display: none;
-		z-index: -5;}
+		z-index: 1;}
 
 	.video.active {
   display: block;
@@ -65,8 +66,18 @@
   height: auto;
   border: 1px solid #00ff00;
   cursor: pointer;
-  z-index: -5;
+  z-index: 1;
 }
+
+.button{position: fixed;
+	right: 40px;
+	top: 100px;
+	color: #00ff00;
+	border: 1px solid #00ff00;
+	font-size: 18px;
+	cursor: pointer;
+	background: none;
+	z-index: 2;}
 
 
 	</style>
@@ -76,20 +87,20 @@
 	<h1 class="title">가성비 영화 캠페인<br>Cost-effective Movie Campaign</h1>
 	<p class="paragraph">본 작품은 허구이며, 실제 인물. 단체. 사건과 어떠한 관련도 없습니다. <br>This is a work of fiction. Names, characters, places, and incidents either are products of the author’s imagination or are used fictitiously. Any resemblance to actual events or locales or persons, living or dead, is entirely coincidental. <br><br>ⓒ2025 가성비 영화 프로젝트. All Rights Reserved.</p>
 	<div class="t-container">
-		<img src="JYS.gif" autoplay muted loop class="thumbnail" data-id="1hYDqSjZ0KkBilYM-d2JLwceKOSg4VX7v"></img>
+		<img src="JYS.gif" autoplay muted loop class="thumbnail" data-id="1QC3KTmtgYyIgXQo-c5M4IgAR0noFnw6h"></img>
 		<img src="SJJ.gif" autoplay muted loop class="thumbnail" data-id="1hYDqSjZ0KkBilYM-d2JLwceKOSg4VX7v"></img>
-		<img src="JYS.gif" autoplay muted loop class="thumbnail" data-id="1hYDqSjZ0KkBilYM-d2JLwceKOSg4VX7v"></img>
+		<img src="JYS.gif" autoplay muted loop class="thumbnail" data-id="1QC3KTmtgYyIgXQo-c5M4IgAR0noFnw6h"></img>
 		<img src="SJJ.gif" autoplay muted loop class="thumbnail" data-id="1hYDqSjZ0KkBilYM-d2JLwceKOSg4VX7v"></img>
-		<img src="JYS.gif" autoplay muted loop class="thumbnail" data-id="1hYDqSjZ0KkBilYM-d2JLwceKOSg4VX7v"></img>
+		<img src="JYS.gif" autoplay muted loop class="thumbnail" data-id="1QC3KTmtgYyIgXQo-c5M4IgAR0noFnw6h"></img>
 		<img src="SJJ.gif" autoplay muted loop class="thumbnail" data-id="1hYDqSjZ0KkBilYM-d2JLwceKOSg4VX7v"></img>
 	</div>
 	<div class="cursor"><img src="UFO.png" width="120px"></div>
 
 	<div class="video" id="video">
-  <iframe id="driveVideo" 
-    width="680px" height="382px" style="border: 1px solid #00ff00" src="https://drive.google.com/file/d/1hYDqSjZ0KkBilYM-d2JLwceKOSg4VX7v/preview" allowfullscreen>
-  </iframe>
-</div>
+	  <button id="closeBtn" class="button" >X</button>
+	  <iframe id="driveVideo" width="680px" height="382px" style="border: 1px solid #00ff00" allowfullscreen>
+	  </iframe>
+	</div>
 
 
 
@@ -107,22 +118,22 @@
 	})
 
 	const overlay = document.getElementById('video');
-	const videoEl = document.getElementById('driveVideo')
+	const videoEl = document.getElementById('driveVideo');
+	const closeBtn = document.getElementById('closeBtn');
 
 	document.querySelectorAll('.thumbnail').forEach(th => {
   th.addEventListener('click', () => {
     const fileId = th.dataset.id;
     if (!fileId) return alert("Drive 파일 ID가 필요합니다.");
 
-    const src = `https://drive.google.com/file/d/${fileId}/preview`;
-    videoEl.src = src;       
-    overlay.classList.add('active'); 
+    videoEl.src = `https://drive.google.com/file/d/${fileId}/preview`;
+    overlay.style.display = 'block';
   });
 });
 
-	videoEl.addEventListener('click', () => {
-  overlay.classList.remove('active');
-  videoEl.src = "";
+	closeBtn.addEventListener('click', () => {
+  overlay.style.display = 'none';
+  videoEl.src = '';
 });
 
 </script>
