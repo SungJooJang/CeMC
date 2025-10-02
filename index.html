@@ -84,8 +84,10 @@
 	<div class="cursor"><img src="UFO.png" width="120px"></div>
 
 	<div class="video" id="video">
-    <video id="driveVideo" controls playsinline></video>
-  </div>
+  <iframe id="driveVideo" 
+    width="680px" height="382px" style="border: 1px solid #00ff00" src="https://drive.google.com/file/d/1hYDqSjZ0KkBilYM-d2JLwceKOSg4VX7v/preview" allowfullscreen>
+  </iframe>
+</div>
 
 
 
@@ -110,17 +112,15 @@
     const fileId = th.dataset.id;
     if (!fileId) return alert("Drive 파일 ID가 필요합니다.");
 
-    const src = `https://drive.google.com/uc?export=preview&id=${fileId}`;
-    videoEl.src = src;
-    videoEl.play().catch(()=>{});
-    overlay.classList.add('active');
+    const src = `https://drive.google.com/file/d/${fileId}/preview`;
+    videoEl.src = src;       
+    overlay.classList.add('active'); 
   });
 });
 
 	videoEl.addEventListener('click', () => {
-  videoEl.pause();
-  videoEl.src = "";
   overlay.classList.remove('active');
+  videoEl.src = "";
 });
 
 </script>
